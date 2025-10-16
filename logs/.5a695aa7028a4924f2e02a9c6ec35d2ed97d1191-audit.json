@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/markb/dev/pbtrivia2/logs/.5a695aa7028a4924f2e02a9c6ec35d2ed97d1191-audit.json",
+    "files": [
+        {
+            "date": 1760651482704,
+            "name": "/Users/markb/dev/pbtrivia2/logs/mcp-puppeteer-2025-10-16.log",
+            "hash": "6b4a65c3a6115941024cda7ebb1d8053f528ee14a0e59cf62526d70578591dc2"
+        }
+    ],
+    "hashType": "sha256"
+}
