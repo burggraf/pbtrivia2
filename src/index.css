@@ -44,7 +44,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border) / var(--tw-border-opacity, 1));
   }
 
   body {
