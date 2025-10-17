@@ -1,17 +1,19 @@
 import { AuthLanding } from '@/components/auth/AuthLanding'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/contexts/AuthContext'
+import { ThemeToggle } from '@/components/theme/ThemeToggle'
+import { ThemePersistenceNotice } from '@/components/theme/ThemePersistenceNotice'
 
 function App() {
   const { isAuthenticated, isLoading, user, logout } = useAuth()
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-50">
+      <div className="flex min-h-screen items-center justify-center bg-background">
         <div
           role="status"
           aria-live="polite"
-          className="rounded-full border border-gray-200 px-6 py-3 text-sm font-medium text-gray-600 shadow-sm"
+          className="rounded-full border border-border px-6 py-3 text-sm font-medium text-muted-foreground shadow-sm"
         >
           Checking your account...
         </div>
@@ -24,58 +26,54 @@ function App() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-950 text-gray-50">
-      <header className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-          <div>
+    <div className="flex min-h-screen flex-col bg-background text-foreground transition-colors">
+      <header className="border-b border-border/60 bg-card/70 backdrop-blur">
+        <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+          <div className="space-y-1">
             <h1 className="text-xl font-semibold">pbTrivia</h1>
-            <p className="text-sm text-slate-300">
+            <p className="text-sm text-muted-foreground">
               Plan games, track scores, and keep your audience engaged.
             </p>
           </div>
-          <div className="flex items-center gap-3 text-sm text-slate-300">
-            <span>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+            <ThemeToggle />
+            <span className="flex items-center gap-1">
               Signed in as{' '}
-              <span className="font-medium text-white">{user?.email ?? 'Player'}</span>
+              <span className="font-medium text-foreground">{user?.email ?? 'Player'}</span>
             </span>
-            <Button
-              type="button"
-              variant="outline"
-              className="border-white/20 text-white hover:bg-white/10"
-              onClick={() => logout()}
-            >
+            <Button type="button" variant="outline" onClick={() => logout()}>
               Sign out
             </Button>
           </div>
         </div>
       </header>
 
-      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-8 px-6 py-10">
-        <section className="rounded-2xl border border-white/10 bg-slate-900 p-6 shadow-lg">
-          <h2 className="text-2xl font-semibold text-white">Welcome to pbTrivia</h2>
-          <p className="mt-2 max-w-2xl text-sm text-slate-300">
+      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-6 px-6 py-10">
+        <ThemePersistenceNotice />
+
+        <section className="rounded-2xl border border-border bg-card p-6 shadow-sm transition-colors">
+          <h2 className="text-2xl font-semibold">Welcome to pbTrivia</h2>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
             Launch new trivia events, manage rounds, and collaborate with your co-hosts in real
             time. Start by creating a lobby or review tonight&apos;s question sets.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button>Create new event</Button>
-            <Button variant="outline" className="border-white/20 text-white hover:bg-white/10">
-              View question bank
-            </Button>
+            <Button variant="outline">View question bank</Button>
           </div>
         </section>
 
         <section className="grid gap-4 md:grid-cols-2">
-          <div className="rounded-2xl border border-white/5 bg-slate-900/70 p-5">
-            <h3 className="text-lg font-medium text-white">Upcoming shows</h3>
-            <p className="mt-2 text-sm text-slate-300">
+          <div className="rounded-2xl border border-border bg-card/70 p-5 shadow-sm transition-colors">
+            <h3 className="text-lg font-medium">Upcoming shows</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               You don&rsquo;t have any scheduled events yet. Create one to invite players and keep
               scorecards in sync.
             </p>
           </div>
-          <div className="rounded-2xl border border-white/5 bg-slate-900/70 p-5">
-            <h3 className="text-lg font-medium text-white">Recent activity</h3>
-            <p className="mt-2 text-sm text-slate-300">
+          <div className="rounded-2xl border border-border bg-card/70 p-5 shadow-sm transition-colors">
+            <h3 className="text-lg font-medium">Recent activity</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               Activity from your team will show up here after your first game session.
             </p>
           </div>

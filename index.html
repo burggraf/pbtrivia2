@@ -19,6 +19,40 @@
       - Add Open Graph tags for social sharing
       - Add your own favicon in public/ directory
     -->
+    <script>
+      ;(function applyInitialTheme() {
+        const storageKey = 'pbtrivia:theme'
+        const root = document.documentElement
+        const systemPrefersDark =
+          typeof window.matchMedia === 'function' &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+
+        let storedPreference = null
+
+        try {
+          storedPreference = window.localStorage.getItem(storageKey)
+        } catch (error) {
+          storedPreference = null
+        }
+
+        const isValidPreference = value => {
+          return value === 'light' || value === 'dark' || value === 'system'
+        }
+
+        const preference = isValidPreference(storedPreference) ? storedPreference : 'system'
+        const resolvedTheme = preference === 'system' ? (systemPrefersDark ? 'dark' : 'light') : preference
+
+        root.dataset.theme = resolvedTheme
+
+        if (resolvedTheme === 'dark') {
+          root.classList.add('dark')
+        } else {
+          root.classList.remove('dark')
+        }
+
+        root.style.colorScheme = resolvedTheme
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

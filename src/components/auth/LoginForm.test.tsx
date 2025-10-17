@@ -23,7 +23,6 @@ vi.mock('@/contexts/AuthContext', () => ({
 }))
 
 // The component import must come after the mocks
-// eslint-disable-next-line import/order
 import { LoginForm } from './LoginForm'
 
 const renderLoginForm = (props: Partial<ComponentProps<typeof LoginForm>> = {}) =>

@@ -1,2 +1,53 @@
-/* Tailwind CSS directives - these import Tailwind's utility classes */
 @import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --background: 0 0% 100%;
+  --foreground: 222 47% 12%;
+  --muted: 214 32% 91%;
+  --muted-foreground: 222 20% 42%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 12%;
+  --primary: 210 100% 40%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 12%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222 47% 12%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 215 20% 65%;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --card: 222 47% 14%;
+  --card-foreground: 210 40% 98%;
+  --primary: 210 100% 60%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 222 47% 19%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 222 47% 23%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62% 55%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 213 27% 84%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}

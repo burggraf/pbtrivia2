@@ -18,6 +18,7 @@ vi.mock('./App.tsx', () => ({
 }))
 
 let AuthContextModule: typeof import('./contexts/AuthContext')
+let ThemeContextModule: typeof import('./contexts/ThemeContext')
 
 describe('main entry point', () => {
   beforeEach(async () => {
@@ -26,6 +27,7 @@ describe('main entry point', () => {
     createRootMock.mockClear()
     document.body.innerHTML = '<div id="root"></div>'
     AuthContextModule = await import('./contexts/AuthContext')
+    ThemeContextModule = await import('./contexts/ThemeContext')
   })
 
   it('wraps App with AuthProvider', async () => {
@@ -35,9 +37,12 @@ describe('main entry point', () => {
     expect(renderMock).toHaveBeenCalledTimes(1)
 
     const tree = renderMock.mock.calls[0][0] as ReactElement
-    expect(tree.props.children.type).toBe(AuthContextModule.AuthProvider)
+    expect(tree.props.children.type).toBe(ThemeContextModule.ThemeProvider)
 
-    const providerChild = tree.props.children.props.children as ReactElement
-    expect(providerChild.type).toBe(AppMock)
+    const authProvider = tree.props.children.props.children as ReactElement
+    expect(authProvider.type).toBe(AuthContextModule.AuthProvider)
+
+    const appTree = authProvider.props.children as ReactElement
+    expect(appTree.type).toBe(AppMock)
   })
 })

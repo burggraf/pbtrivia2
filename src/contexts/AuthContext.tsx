@@ -61,8 +61,6 @@ export const AuthProvider = ({ children }: PropsWithChildren): JSX.Element => {
     try {
       const { token, record } = await pocketBase.collection('users').authWithPassword(email, password)
       pocketBase.authStore.save(token, record)
-    } catch (error) {
-      throw error
     } finally {
       setIsLoading(false)
     }
@@ -83,8 +81,6 @@ export const AuthProvider = ({ children }: PropsWithChildren): JSX.Element => {
         data.password
       )
       pocketBase.authStore.save(token, record)
-    } catch (error) {
-      throw error
     } finally {
       setIsLoading(false)
     }
@@ -98,8 +94,6 @@ export const AuthProvider = ({ children }: PropsWithChildren): JSX.Element => {
     setIsLoading(true)
     try {
       await pocketBase.collection('users').requestPasswordReset(email)
-    } catch (error) {
-      throw error
     } finally {
       setIsLoading(false)
     }

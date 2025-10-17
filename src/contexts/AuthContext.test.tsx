@@ -3,6 +3,8 @@ import { describe, beforeEach, afterEach, expect, it, vi } from 'vitest'
 import { act, render, screen, waitFor } from '@/test/utils'
 import userEvent from '@testing-library/user-event'
 
+type ListenerRecord = Record<string, unknown> | null
+
 const {
   authListeners,
   mockAuthStore,
@@ -11,7 +13,7 @@ const {
   mockRequestPasswordReset,
   collectionSpy
 } = vi.hoisted(() => {
-  const listeners = new Set<(token: string, record: any) => void>()
+  const listeners = new Set<(token: string, record: ListenerRecord) => void>()
   const authWithPassword = vi.fn()
   const create = vi.fn()
   const requestPasswordReset = vi.fn()
@@ -24,9 +26,9 @@ const {
 
   const store = {
     token: '',
-    record: null as any,
+    record: null as ListenerRecord,
     isValid: false,
-    save(token: string, record: any) {
+    save(token: string, record: ListenerRecord) {
       this.token = token
       this.record = record
       this.isValid = Boolean(token) && Boolean(record)
@@ -35,7 +37,7 @@ const {
     clear() {
       this.save('', null)
     },
-    onChange(callback: (token: string, record: any) => void) {
+    onChange(callback: (token: string, record: ListenerRecord) => void) {
       listeners.add(callback)
       return () => listeners.delete(callback)
     }
@@ -59,7 +61,6 @@ vi.mock('@/lib/pocketbase', () => ({
 }))
 
 // The module under test must be imported after the mocks
-// eslint-disable-next-line import/order
 import { AuthProvider, useAuth } from './AuthContext'
 
 const TestConsumer = () => {

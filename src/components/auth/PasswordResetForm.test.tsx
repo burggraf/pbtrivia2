@@ -22,7 +22,6 @@ vi.mock('@/contexts/AuthContext', () => ({
   useAuth: () => useAuthMock()
 }))
 
-// eslint-disable-next-line import/order
 import { PasswordResetForm } from './PasswordResetForm'
 
 const renderPasswordResetForm = (

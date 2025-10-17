@@ -16,7 +16,6 @@ vi.mock('@/contexts/AuthContext', () => ({
   useAuth: () => authMock
 }))
 
-// eslint-disable-next-line import/order
 import { AuthLanding } from './AuthLanding'
 
 describe('AuthLanding', () => {
