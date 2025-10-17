@@ -67,7 +67,7 @@ export function PasswordResetForm({ onNavigate }: PasswordResetFormProps) {
     <form className="space-y-6" onSubmit={handleSubmit} noValidate>
       <div className="space-y-1 text-center">
         <h2 className="text-xl font-semibold">Reset your password</h2>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-muted-foreground">
           Enter the email associated with your account and we will send you a reset link.
         </p>
       </div>
@@ -92,7 +92,7 @@ export function PasswordResetForm({ onNavigate }: PasswordResetFormProps) {
           aria-describedby={errors.email ? 'password-reset-email-error' : undefined}
         />
         {errors.email ? (
-          <p className="text-sm text-red-600" id="password-reset-email-error">
+          <p className="text-sm text-destructive" id="password-reset-email-error">
             {errors.email}
           </p>
         ) : null}
@@ -102,13 +102,8 @@ export function PasswordResetForm({ onNavigate }: PasswordResetFormProps) {
         {isSubmitting ? 'Sending...' : 'Send reset link'}
       </Button>
 
-      <div className="text-center text-sm">
-        <Button
-          type="button"
-          variant="link"
-          className="p-0"
-          onClick={() => onNavigate?.('login')}
-        >
+      <div className="text-center text-sm text-muted-foreground">
+        <Button type="button" variant="link" className="p-0 text-sm" onClick={() => onNavigate?.('login')}>
           Back to sign in
         </Button>
       </div>

@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react'
 import type { RenderOptions } from '@testing-library/react'
-import type { ReactElement } from 'react'
+import type { PropsWithChildren, ReactElement } from 'react'
+import { ThemeProvider } from '@/contexts/ThemeContext'
 
 /**
  * Custom render function that wraps components with necessary providers
@@ -11,8 +12,12 @@ import type { ReactElement } from 'react'
  * render(<MyComponent />)
  * expect(screen.getByText('Hello')).toBeInTheDocument()
  */
+function AllProviders({ children }: PropsWithChildren) {
+  return <ThemeProvider>{children}</ThemeProvider>
+}
+
 function customRender(ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) {
-  return render(ui, { ...options })
+  return render(ui, { wrapper: AllProviders, ...options })
 }
 
 // Re-export everything from React Testing Library

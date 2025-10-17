@@ -106,7 +106,7 @@ export function LoginForm({ onNavigate, onSuccess }: LoginFormProps) {
           aria-describedby={errors.email ? 'login-email-error' : undefined}
         />
         {errors.email ? (
-          <p className="text-sm text-red-600" id="login-email-error">
+          <p className="text-sm text-destructive" id="login-email-error">
             {errors.email}
           </p>
         ) : null}
@@ -137,7 +137,7 @@ export function LoginForm({ onNavigate, onSuccess }: LoginFormProps) {
           aria-describedby={errors.password ? 'login-password-error' : undefined}
         />
         {errors.password ? (
-          <p className="text-sm text-red-600" id="login-password-error">
+          <p className="text-sm text-destructive" id="login-password-error">
             {errors.password}
           </p>
         ) : null}
@@ -147,23 +147,25 @@ export function LoginForm({ onNavigate, onSuccess }: LoginFormProps) {
         {isSubmitting ? 'Signing in...' : 'Sign in'}
       </Button>
 
-      <div className="flex flex-col items-center gap-2 text-sm">
-        <button
+      <div className="flex flex-col items-center gap-2 text-sm text-muted-foreground">
+        <Button
           type="button"
-          className="text-gray-900 underline-offset-4 hover:underline"
+          variant="link"
+          className="p-0 text-sm"
           onClick={() => onNavigate?.('recover')}
         >
           Forgot password?
-        </button>
-        <div className="text-gray-600">
+        </Button>
+        <div>
           Need an account?{' '}
-          <button
+          <Button
             type="button"
-            className="font-medium text-gray-900 underline-offset-4 hover:underline"
+            variant="link"
+            className="p-0 text-sm font-medium"
             onClick={() => onNavigate?.('register')}
           >
             Create one
-          </button>
+          </Button>
         </div>
       </div>
     </form>

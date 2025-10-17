@@ -124,7 +124,7 @@ export function RegisterForm({ onNavigate, onSuccess }: RegisterFormProps) {
           aria-describedby={errors.email ? 'register-email-error' : undefined}
         />
         {errors.email ? (
-          <p className="text-sm text-red-600" id="register-email-error">
+          <p className="text-sm text-destructive" id="register-email-error">
             {errors.email}
           </p>
         ) : null}
@@ -145,7 +145,7 @@ export function RegisterForm({ onNavigate, onSuccess }: RegisterFormProps) {
           aria-describedby={errors.displayName ? 'register-display-name-error' : undefined}
         />
         {errors.displayName ? (
-          <p className="text-sm text-red-600" id="register-display-name-error">
+          <p className="text-sm text-destructive" id="register-display-name-error">
             {errors.displayName}
           </p>
         ) : null}
@@ -165,11 +165,11 @@ export function RegisterForm({ onNavigate, onSuccess }: RegisterFormProps) {
           aria-describedby={errors.password ? 'register-password-error' : undefined}
         />
         {errors.password ? (
-          <p className="text-sm text-red-600" id="register-password-error">
+          <p className="text-sm text-destructive" id="register-password-error">
             {errors.password}
           </p>
         ) : (
-          <p className="text-xs text-gray-500">Use at least 8 characters.</p>
+          <p className="text-xs text-muted-foreground">Use at least 8 characters.</p>
         )}
       </div>
 
@@ -187,7 +187,7 @@ export function RegisterForm({ onNavigate, onSuccess }: RegisterFormProps) {
           aria-describedby={errors.passwordConfirm ? 'register-password-confirm-error' : undefined}
         />
         {errors.passwordConfirm ? (
-          <p className="text-sm text-red-600" id="register-password-confirm-error">
+          <p className="text-sm text-destructive" id="register-password-confirm-error">
             {errors.passwordConfirm}
           </p>
         ) : null}
@@ -197,15 +197,16 @@ export function RegisterForm({ onNavigate, onSuccess }: RegisterFormProps) {
         {isSubmitting ? 'Creating account...' : 'Create account'}
       </Button>
 
-      <div className="text-center text-sm text-gray-600">
+      <div className="text-center text-sm text-muted-foreground">
         Already have an account?{' '}
-        <button
+        <Button
           type="button"
-          className="font-medium text-gray-900 underline-offset-4 hover:underline"
+          variant="link"
+          className="p-0 text-sm font-medium"
           onClick={() => onNavigate?.('login')}
         >
           Sign in
-        </button>
+        </Button>
       </div>
     </form>
   )

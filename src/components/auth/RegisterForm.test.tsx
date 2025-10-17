@@ -22,7 +22,6 @@ vi.mock('@/contexts/AuthContext', () => ({
   useAuth: () => useAuthMock()
 }))
 
-// eslint-disable-next-line import/order
 import { RegisterForm } from './RegisterForm'
 
 const renderRegisterForm = (props: Partial<ComponentProps<typeof RegisterForm>> = {}) =>

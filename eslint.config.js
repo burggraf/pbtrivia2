@@ -23,7 +23,10 @@ export default defineConfig([
       // Allow exporting non-components from UI library and test utility files
       'react-refresh/only-export-components': [
         'warn',
-        { allowConstantExport: true, allowExportNames: ['buttonVariants'] },
+        {
+          allowConstantExport: true,
+          allowExportNames: ['buttonVariants', 'useAuth', 'useTheme'],
+        },
       ],
     },
   },
