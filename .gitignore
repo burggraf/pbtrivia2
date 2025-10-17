@@ -1,3 +1,16 @@
+# PocketBase executable
 /pocketbase
-/questions.tsv
+questions.tsv 
+
+# Database and runtime data (not tracked - rebuild from seed)
+/pb_data
+
+# Logs
+/logs/*.log
+
+# Optional JSON export (large file, can regenerate)
+/questions-export.json
+
+# Backups directory (not tracked)
+/backups
 
