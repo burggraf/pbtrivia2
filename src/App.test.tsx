@@ -1,45 +1,87 @@
-import { describe, it, expect } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@/test/utils'
 import userEvent from '@testing-library/user-event'
 import App from './App'
 
+const useAuthMock = vi.fn()
+const authLandingSpy = vi.fn(() => <div data-testid="auth-landing">Auth Landing</div>)
+
+vi.mock('@/contexts/AuthContext', () => ({
+  useAuth: () => useAuthMock()
+}))
+
+vi.mock('@/components/auth/AuthLanding', () => ({
+  AuthLanding: () => authLandingSpy()
+}))
+
 describe('App', () => {
-  it('renders the app title', () => {
-    render(<App />)
-    expect(screen.getByRole('heading', { name: /Vite \+ React \+ shadcn\/ui/i })).toBeInTheDocument()
+  beforeEach(() => {
+    useAuthMock.mockReset()
+    authLandingSpy.mockClear()
   })
 
-  it('renders the counter button', () => {
+  const baseAuthState = {
+    login: vi.fn(),
+    register: vi.fn(),
+    logout: vi.fn(),
+    requestPasswordReset: vi.fn(),
+    user: null
+  }
+
+  it('renders auth landing when the user is not authenticated', () => {
+    useAuthMock.mockReturnValue({
+      ...baseAuthState,
+      isAuthenticated: false,
+      isLoading: false
+    })
+
     render(<App />)
-    const button = screen.getByRole('button', { name: /count is 0/i })
-    expect(button).toBeInTheDocument()
+
+    expect(screen.getByTestId('auth-landing')).toBeInTheDocument()
   })
 
-  it('increments counter when button is clicked', async () => {
+  it('shows a loading indicator while auth state initializes', () => {
+    useAuthMock.mockReturnValue({
+      ...baseAuthState,
+      isAuthenticated: false,
+      isLoading: true
+    })
+
+    render(<App />)
+
+    expect(screen.getByRole('status')).toHaveTextContent(/checking your account/i)
+    expect(authLandingSpy).not.toHaveBeenCalled()
+  })
+
+  it('renders the main application when authenticated', () => {
+    useAuthMock.mockReturnValue({
+      ...baseAuthState,
+      isAuthenticated: true,
+      isLoading: false,
+      user: { id: '123', email: 'host@example.com', collectionName: 'users' }
+    })
+
+    render(<App />)
+
+    expect(screen.getByText(/welcome to pbtrivia/i)).toBeInTheDocument()
+    expect(screen.getByText(/host@example.com/i)).toBeInTheDocument()
+  })
+
+  it('allows the user to logout', async () => {
+    const logoutSpy = vi.fn()
+    useAuthMock.mockReturnValue({
+      ...baseAuthState,
+      logout: logoutSpy,
+      isAuthenticated: true,
+      isLoading: false,
+      user: { id: '123', email: 'host@example.com', collectionName: 'users' }
+    })
+
     const user = userEvent.setup()
     render(<App />)
 
-    const button = screen.getByRole('button', { name: /count is 0/i })
-    await user.click(button)
+    await user.click(screen.getByRole('button', { name: /sign out/i }))
 
-    expect(screen.getByRole('button', { name: /count is 1/i })).toBeInTheDocument()
-  })
-
-  it('renders button variants', () => {
-    render(<App />)
-
-    expect(screen.getByRole('button', { name: 'Outline' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Secondary' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Ghost' })).toBeInTheDocument()
-  })
-
-  it('buttons are keyboard accessible', () => {
-    render(<App />)
-    const buttons = screen.getAllByRole('button')
-
-    // All buttons should be in the tab order
-    buttons.forEach(button => {
-      expect(button).not.toHaveAttribute('tabIndex', '-1')
-    })
+    expect(logoutSpy).toHaveBeenCalledTimes(1)
   })
 })

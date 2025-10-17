@@ -25,7 +25,17 @@ Real-time multi-user trivia application designed for pubs, restaurants, and priv
 npm install
 ```
 
-### 2. Development
+### 2. Configure PocketBase Connection
+
+Create a `.env.local` file (gitignored) at the project root. The frontend looks for `VITE_POCKETBASE_URL` to know where the PocketBase API lives. Default development URL is `http://127.0.0.1:8090`.
+
+```bash
+echo "VITE_POCKETBASE_URL=http://127.0.0.1:8090" > .env.local
+```
+
+PocketBase must be running before you interact with the auth UI. See `POCKETBASE_SETUP.md` for bootstrapping the backend and populating sample data.
+
+### 3. Development
 
 Start the development server with hot module replacement:
 
@@ -35,7 +45,7 @@ npm run dev
 
 The app will be available at `http://localhost:5173`
 
-### 3. Build for Production
+### 4. Build for Production
 
 ```bash
 npm run build
@@ -43,7 +53,7 @@ npm run build
 
 Creates optimized static assets in `dist/` directory ready for deployment.
 
-### 4. Preview Production Build
+### 5. Preview Production Build
 
 ```bash
 npm run preview
@@ -61,8 +71,8 @@ Serves the production build locally for testing.
 | `npm run test` | Run unit/component tests with Vitest |
 | `npm run test:watch` | Run tests in watch mode |
 | `npm run test:coverage` | Generate test coverage report |
-| `npm run test:e2e` | Run end-to-end tests with Playwright |
-| `npm run test:e2e:ui` | Run E2E tests with Playwright UI |
+| `npm run test:e2e` | Run end-to-end tests with Playwright (requires PocketBase backend) |
+| `npm run test:e2e:ui` | Run Playwright in interactive UI mode |
 | `npm run lint` | Lint code with ESLint |
 | `npm run format` | Format code with Prettier |
 
@@ -94,6 +104,14 @@ pbtrivia2/
 ├── tsconfig.json           # TypeScript configuration
 └── components.json         # shadcn/ui configuration
 ```
+
+## Authentication Overview
+
+- The landing page (`AuthLanding`) guides unauthenticated users through **Sign in**, **Create account**, and **Reset password** flows.
+- Forms call the PocketBase JavaScript SDK via a singleton client (`src/lib/pocketbase.ts`).
+- Successful registration automatically signs the user in and redirects to the main application shell.
+- Auth state lives in `AuthContext`, which syncs PocketBase's `authStore` with React state and localStorage.
+- Set `VITE_POCKETBASE_URL` in your environment to point to your PocketBase instance. Defaults to `http://127.0.0.1:8090` when unset.
 
 ## Adding shadcn/ui Components
 
