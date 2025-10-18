@@ -22,11 +22,26 @@ export type QuestionRecord = RecordModel & {
 }
 
 /**
+ * Record shape for the PocketBase `games` collection.
+ */
+export type GameRecord = RecordModel & {
+  collectionName: 'games'
+  host: string
+  name: string
+  code: string
+  status: string
+  currentRound: number
+  startedAt?: string
+  completedAt?: string
+}
+
+/**
  * Narrowed list of collections we interact with from the frontend.
  * Extend this type as new collections become accessible from the UI.
  */
 export type Collections = {
   questions: QuestionRecord
+  games: GameRecord
 }
 
 const resolveBaseUrl = () => {
