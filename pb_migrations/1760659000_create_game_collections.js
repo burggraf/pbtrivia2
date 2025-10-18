@@ -25,11 +25,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "_pb_users_auth_",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "_pb_users_auth_",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "text_games_name",
@@ -121,11 +123,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "_pb_users_auth_",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "_pb_users_auth_",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "rel_rounds_game",
@@ -135,11 +139,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "pbc_4009211000",
-          "cascadeDelete": true,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "pbc_4009211000",
+            "cascadeDelete": true,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "text_rounds_name",
@@ -218,11 +224,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "_pb_users_auth_",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "_pb_users_auth_",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "rel_rq_round",
@@ -232,11 +240,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "pbc_4009211001",
-          "cascadeDelete": true,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "pbc_4009211001",
+            "cascadeDelete": true,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "rel_rq_question",
@@ -246,11 +256,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "pbc_4009210445",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "pbc_4009210445",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "num_rq_order",
@@ -304,11 +316,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "_pb_users_auth_",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "_pb_users_auth_",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "rel_teams_game",
@@ -318,11 +332,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "pbc_4009211000",
-          "cascadeDelete": true,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "pbc_4009211000",
+            "cascadeDelete": true,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "text_teams_name",
@@ -373,11 +389,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "_pb_users_auth_",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "_pb_users_auth_",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "rel_tm_team",
@@ -387,11 +405,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "pbc_4009211003",
-          "cascadeDelete": true,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "pbc_4009211003",
+            "cascadeDelete": true,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "rel_tm_user",
@@ -401,11 +421,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "_pb_users_auth_",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "_pb_users_auth_",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "bool_tm_captain",
@@ -445,11 +467,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "_pb_users_auth_",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "_pb_users_auth_",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "rel_ta_team",
@@ -459,11 +483,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "pbc_4009211003",
-          "cascadeDelete": true,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "pbc_4009211003",
+            "cascadeDelete": true,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "rel_ta_round",
@@ -473,11 +499,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "pbc_4009211001",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "pbc_4009211001",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "rel_ta_round_question",
@@ -487,11 +515,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "pbc_4009211002",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "pbc_4009211002",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "rel_ta_question",
@@ -501,11 +531,13 @@ migrate(
           "required": true,
           "presentable": false,
           "unique": false,
-          "collectionId": "pbc_4009210445",
-          "cascadeDelete": false,
-          "minSelect": 1,
-          "maxSelect": 1,
-          "displayFields": []
+          "options": {
+            "collectionId": "pbc_4009210445",
+            "cascadeDelete": false,
+            "minSelect": 1,
+            "maxSelect": 1,
+            "displayFields": []
+          }
         },
         {
           "id": "text_ta_answer",
